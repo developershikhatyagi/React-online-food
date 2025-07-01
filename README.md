@@ -25,8 +25,6 @@
 |-----------|------|
 | ![Home](./public/images/homePage.png) |  ![Cart](./public/images/cartPage.png) |
 
-> 💡 Tip: You can upload screenshots on [imgur.com](https://imgur.com) or GitHub issues and use the link here.
-
 ---
 
 ## 🛠️ Tech Stack
