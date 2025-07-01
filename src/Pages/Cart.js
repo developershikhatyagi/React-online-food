@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "./CartContext";
+import Toast from "../components/Toast/Toast";
 
 const Cart = () => {
 
   let total = 0;
+
+  const [toast, setToast] = useState(null);
 
   const [products, setProducts] = useState([]);
 
@@ -86,6 +89,8 @@ const handleDelete = (productId) => {
 };
 
 const handleOrderNow  = () => {
+  // Show toast with product name
+    setToast({ message: `🛒 Your Order is Successfully!`, type: 'success' });
   window.alert("Your Order is Successfully!");
   setProducts([]);
   setCart({});
@@ -93,8 +98,18 @@ const handleOrderNow  = () => {
 
 
 
+
+
   return (
-      
+    <>
+       {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+    {
     !products.length 
     
     ? <img className="mx-auto w-1/2 mt-12" src="/images/empty-cart.png" alt=""></img>
@@ -131,8 +146,11 @@ const handleOrderNow  = () => {
       <span className="text-lg font-semibold">Grand Total: ₹ { grandTotal }</span>
       <button onClick={ handleOrderNow } className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full">Order Now</button>
     </div>
+
   </div>
-  
+}
+</>
+    
   
   )
 }
